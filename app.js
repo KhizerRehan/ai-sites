@@ -42,8 +42,8 @@ function setTime(name){let p=presets[name];targetBg.setHex(p.bg);targetHemi.setH
 setTime('golden');scene.background.copy(targetBg);
 let angle=.5,elevation=.77,down=null,moved=false;const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2(),plane=new THREE.Plane(new THREE.Vector3(0,1,0),-.23),hit=new THREE.Vector3();
 function updateCamera(){const d=11;camera.position.set(Math.sin(angle)*Math.cos(elevation)*d,Math.sin(elevation)*d,Math.cos(angle)*Math.cos(elevation)*d);camera.lookAt(lookAt)}updateCamera();
-host.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};moved=false;host.setPointerCapture(e.pointerId)});
-host.addEventListener('pointermove',e=>{if(!down)return;let dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;angle-=dx*.007;elevation=THREE.MathUtils.clamp(elevation+dy*.005,.38,1.1);down={x:e.clientX,y:e.clientY};updateCamera()});
+host.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY};moved=false;host.setPointerCapture(e.pointerId)});
+host.addEventListener('pointermove',e=>{if(!down)return;let dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.hypot(e.clientX-down.startX,e.clientY-down.startY)>6)moved=true;if(moved){angle-=dx*.007;elevation=THREE.MathUtils.clamp(elevation+dy*.005,.38,1.1);updateCamera()}down.x=e.clientX;down.y=e.clientY});
 host.addEventListener('pointerup',e=>{if(!down)return;if(!moved){const rect=host.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);raycaster.setFromCamera(pointer,camera);if(raycaster.ray.intersectPlane(plane,hit)&&Math.hypot(hit.x,hit.z)<4){flower(hit.x,hit.z,flowerColors[flowerColor],.9);}}down=null});host.addEventListener('pointercancel',()=>down=null);
 document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',()=>setTime(b.dataset.time)));
 document.querySelectorAll('[data-color]').forEach(b=>b.addEventListener('click',()=>{flowerColor=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>{let on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',on)})}));
