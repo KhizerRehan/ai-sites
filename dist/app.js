@@ -1,15 +1,66 @@
-const scene=document.querySelector('.experience'), burger=document.querySelector('#burger'),range=document.querySelector('#range'),toggle=document.querySelector('#toggle'),nav=document.querySelector('#ingredientNav');
-const layers=[
- {name:'Sesame brioche',text:'A golden crown with a little crunch.',clip:'0 0 75% 0',shift:26},
- {name:'Red onion',text:'A crisp, bright bite between the layers.',clip:'22% 0 65% 0',shift:21},
- {name:'Melted cheddar',text:'Golden cheddar, folded over the patty.',clip:'33% 0 53% 0',shift:16},
- {name:'Chargrilled beef',text:'A generous patty with a beautiful sear.',clip:'44% 0 39% 0',shift:12},
- {name:'Tomato',text:'Juicy slices bring a little brightness.',clip:'59% 0 28% 0',shift:8},
- {name:'Lettuce',text:'A fresh, crisp finish to the stack.',clip:'68% 0 15% 0',shift:4},
- {name:'Brioche base',text:'The golden foundation of a good bite.',clip:'83% 0 0 0',shift:0}
+const burger = document.querySelector('#burger');
+const particles = document.querySelector('#particles');
+const toggle = document.querySelector('#toggle');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const duration = 9000;
+const ingredients = [
+  { clip: '0 0 75% 0', rest: 26, x: 160, y: -340, rotation: 24 },
+  { clip: '22% 0 65% 0', rest: 21, x: -260, y: -260, rotation: -32 },
+  { clip: '33% 0 53% 0', rest: 16, x: 270, y: -180, rotation: 28 },
+  { clip: '44% 0 39% 0', rest: 12, x: -300, y: -110, rotation: -20 },
+  { clip: '59% 0 28% 0', rest: 8, x: 280, y: 15, rotation: 35 },
+  { clip: '68% 0 15% 0', rest: 4, x: -250, y: 80, rotation: -30 },
+  { clip: '83% 0 0 0', rest: 0, x: 80, y: 210, rotation: 12 }
 ];
-layers.forEach((layer,i)=>{const el=document.createElement('div');el.className='layer';el.style.clipPath=`inset(${layer.clip})`;el.style.setProperty('--shift',layer.shift);burger.append(el);const btn=document.createElement('button');btn.textContent=layer.name;btn.addEventListener('click',()=>select(i));btn.addEventListener('focus',()=>select(i));btn.addEventListener('mouseenter',()=>select(i));nav.append(btn)});
-function select(i){const l=layers[i];document.querySelector('#detailIndex').textContent='INSIDE THE STACK';document.querySelector('#detailTitle').textContent=l.name;document.querySelector('#detailText').textContent=l.text;document.querySelector('#mobileCaption').textContent=l.name+' — '+l.text;document.querySelectorAll('.layer').forEach((el,n)=>el.classList.toggle('selected',n===i))}
-function update(value){value=Math.max(0,Math.min(100,value));range.value=value;burger.style.setProperty('--open',value/100);scene.classList.toggle('is-open',value>70);toggle.firstChild.textContent=value>50?'Stack it back ':'Explore layers ';document.querySelector('#dragLabel').style.opacity=value>60?'0':'1'}
-range.addEventListener('input',()=>update(+range.value));toggle.addEventListener('click',()=>update(+range.value>50?0:100));let startY,startValue;
-burger.addEventListener('pointerdown',e=>{startY=e.clientY;startValue=+range.value;burger.setPointerCapture(e.pointerId)});burger.addEventListener('pointermove',e=>{if(startY===undefined)return;update(startValue+(startY-e.clientY)/Math.max(100,burger.clientHeight*.35)*100)});burger.addEventListener('pointerup',()=>{startY=undefined});burger.addEventListener('pointercancel',()=>{startY=undefined});update(0);
+const animations = [];
+
+ingredients.forEach((ingredient, index) => {
+  const element = document.createElement('div');
+  element.className = 'layer';
+  element.style.clipPath = `inset(${ingredient.clip})`;
+  const resting = `translateY(${ingredient.rest}%)`;
+  element.style.transform = resting;
+  burger.append(element);
+
+  if (reducedMotion.matches) return;
+  const start = 0.04 + (6 - index) * 0.055;
+  const arrival = start + 0.085;
+  const animation = element.animate([
+    { offset: 0, transform: `translateY(calc(${ingredient.rest}% - 55vh))`, opacity: 0 },
+    { offset: start, transform: `translateY(calc(${ingredient.rest}% - 55vh))`, opacity: 0 },
+    { offset: arrival, transform: resting, opacity: 1, easing: 'cubic-bezier(.2,.75,.25,1)' },
+    { offset: 0.70, transform: resting, opacity: 1 },
+    { offset: 0.83, transform: `translate(${ingredient.x}px, ${ingredient.y}px) rotate(${ingredient.rotation}deg)`, opacity: 0, easing: 'cubic-bezier(.13,.68,.24,1)' },
+    { offset: 1, transform: `translate(${ingredient.x}px, ${ingredient.y}px) rotate(${ingredient.rotation}deg)`, opacity: 0 }
+  ], { duration, iterations: Infinity });
+  animations.push(animation);
+});
+
+if (!reducedMotion.matches) {
+  for (let i = 0; i < 28; i++) {
+    const dot = document.createElement('span');
+    const angle = (i / 28) * Math.PI * 2;
+    const distance = 130 + (i * 47 % 170);
+    dot.className = i % 4 === 0 ? 'particle sauce' : 'particle crumb';
+    dot.style.left = `${48 + (i % 5 - 2) * 2}%`;
+    dot.style.top = `${47 + (i % 7 - 3) * 2}%`;
+    particles.append(dot);
+    animations.push(dot.animate([
+      { offset: 0, transform: 'translate(0, 0) scale(0)', opacity: 0 },
+      { offset: 0.70, transform: 'translate(0, 0) scale(0)', opacity: 0 },
+      { offset: 0.72, transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { offset: 0.85, transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) rotate(${i * 35}deg) scale(.6)`, opacity: 0, easing: 'ease-out' },
+      { offset: 1, opacity: 0 }
+    ], { duration, iterations: Infinity }));
+  }
+
+  let paused = false;
+  toggle.addEventListener('click', () => {
+    paused = !paused;
+    animations.forEach(animation => paused ? animation.pause() : animation.play());
+    toggle.textContent = paused ? 'Play animation' : 'Pause animation';
+    toggle.setAttribute('aria-pressed', String(paused));
+  });
+} else {
+  toggle.hidden = true;
+}
