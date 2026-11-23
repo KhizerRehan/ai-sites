@@ -2,7 +2,7 @@ const burger = document.querySelector('#burger');
 const particles = document.querySelector('#particles');
 const toggle = document.querySelector('#toggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const duration = 9000;
+const duration = 15000;
 const ingredients = [
   { clip: '0 0 75% 0', rest: 26, x: 160, y: -340, rotation: 24 },
   { clip: '22% 0 65% 0', rest: 21, x: -260, y: -260, rotation: -32 },
@@ -23,23 +23,23 @@ ingredients.forEach((ingredient, index) => {
   burger.append(element);
 
   if (reducedMotion.matches) return;
-  const start = 0.04 + (6 - index) * 0.055;
-  const arrival = start + 0.085;
+  const start = 0.025 + (6 - index) * 0.065;
+  const arrival = start + 0.12;
   const animation = element.animate([
-    { offset: 0, transform: `translateY(calc(${ingredient.rest}% - 55vh))`, opacity: 0 },
-    { offset: start, transform: `translateY(calc(${ingredient.rest}% - 55vh))`, opacity: 0 },
-    { offset: arrival, transform: resting, opacity: 1, easing: 'cubic-bezier(.2,.75,.25,1)' },
-    { offset: 0.70, transform: resting, opacity: 1 },
-    { offset: 0.83, transform: `translate(${ingredient.x}px, ${ingredient.y}px) rotate(${ingredient.rotation}deg)`, opacity: 0, easing: 'cubic-bezier(.13,.68,.24,1)' },
+    { offset: 0, transform: `translateY(calc(${ingredient.rest}% - 22vh))`, opacity: 0 },
+    { offset: start, transform: `translateY(calc(${ingredient.rest}% - 22vh))`, opacity: 0, easing: 'cubic-bezier(.22,.61,.36,1)' },
+    { offset: arrival, transform: resting, opacity: 1 },
+    { offset: 0.75, transform: resting, opacity: 1, easing: 'cubic-bezier(.22,.61,.36,1)' },
+    { offset: 0.91, transform: `translate(${ingredient.x}px, ${ingredient.y}px) rotate(${ingredient.rotation}deg)`, opacity: 0, easing: 'cubic-bezier(.13,.68,.24,1)' },
     { offset: 1, transform: `translate(${ingredient.x}px, ${ingredient.y}px) rotate(${ingredient.rotation}deg)`, opacity: 0 }
   ], { duration, iterations: Infinity });
   animations.push(animation);
 });
 
 if (!reducedMotion.matches) {
-  for (let i = 0; i < 28; i++) {
+  for (let i = 0; i < 20; i++) {
     const dot = document.createElement('span');
-    const angle = (i / 28) * Math.PI * 2;
+    const angle = (i / 20) * Math.PI * 2;
     const distance = 130 + (i * 47 % 170);
     dot.className = i % 4 === 0 ? 'particle sauce' : 'particle crumb';
     dot.style.left = `${48 + (i % 5 - 2) * 2}%`;
@@ -47,13 +47,15 @@ if (!reducedMotion.matches) {
     particles.append(dot);
     animations.push(dot.animate([
       { offset: 0, transform: 'translate(0, 0) scale(0)', opacity: 0 },
-      { offset: 0.70, transform: 'translate(0, 0) scale(0)', opacity: 0 },
-      { offset: 0.72, transform: 'translate(0, 0) scale(1)', opacity: 1 },
-      { offset: 0.85, transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) rotate(${i * 35}deg) scale(.6)`, opacity: 0, easing: 'ease-out' },
+      { offset: 0.75, transform: 'translate(0, 0) scale(0)', opacity: 0 },
+      { offset: 0.77, transform: 'translate(0, 0) scale(1)', opacity: 1 },
+      { offset: 0.92, transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) rotate(${i * 35}deg) scale(.6)`, opacity: 0, easing: 'ease-out' },
       { offset: 1, opacity: 0 }
     ], { duration, iterations: Infinity }));
   }
 
+  const sharedStart = document.timeline.currentTime;
+  animations.forEach(animation => { animation.startTime = sharedStart; });
   let paused = false;
   toggle.addEventListener('click', () => {
     paused = !paused;
