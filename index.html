@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komorebi — Bonsai Laboratory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><span class="mark">✳</span><span>KOMOREBI <small>BONSAI LABORATORY</small></span></div><div class="top-note">A LITTLE SPACE TO GROW <span>✺</span></div></header>
+<main>
+<section class="intro"><div class="eyebrow"><span></span> A LIVING STUDY</div><h1>Take your<br><em>time.</em></h1><p>Small trees, big moments. Shape a little world and watch it come to life.</p><div class="stamp"><span>育</span><small>GROWN WITH<br>INTENTION</small></div></section>
+<section class="stage" aria-label="Interactive bonsai tree"><div class="stage-title"><span>YOUR LITTLE TREE</span><span>01 / 01</span></div><div id="canvas"></div><div class="stage-bottom"><span>✳ &nbsp; DRAG TO ROTATE</span><button id="resetView" aria-label="Reset tree view">↺ <span>RESET VIEW</span></button></div></section>
+<aside class="panel"><div class="panel-head"><div><div class="eyebrow">THE GROWING ROOM</div><h2>Make it yours<span>.</span></h2></div><span class="flower">✳</span></div><p class="panel-copy">A little care goes a long way. Experiment with your tree below.</p>
+<div class="control"><div class="label"><label for="age">Time to grow</label><output id="ageValue">65 years</output></div><input id="age" type="range" min="10" max="100" value="65"><div class="scale"><span>YOUNG SAPLING</span><span>OLD SOUL</span></div></div>
+<div class="control"><div class="label"><label for="shape">Branch character</label><output id="shapeValue">Balanced</output></div><input id="shape" type="range" min="0" max="100" value="48"><div class="scale"><span>UPRIGHT</span><span>WILD & FREE</span></div></div>
+<div class="control"><div class="label"><span>Choose your foliage</span><span class="hint" id="foliageName">Moss</span></div><div class="swatches" role="group" aria-label="Foliage color"><button class="swatch active" data-leaf="moss" aria-label="Moss foliage" title="Moss"><i style="--c:#6b8350"></i></button><button class="swatch" data-leaf="jade" aria-label="Jade foliage" title="Jade"><i style="--c:#3f7564"></i></button><button class="swatch" data-leaf="blossom" aria-label="Blossom foliage" title="Blossom"><i style="--c:#e0a39b"></i></button><button class="swatch" data-leaf="autumn" aria-label="Autumn foliage" title="Autumn"><i style="--c:#ca734b"></i></button></div></div>
+<div class="control pot-control"><div class="label"><span>Choose a vessel</span><span class="hint" id="potName">Sandstone</span></div><div class="pots" role="group" aria-label="Pot style"><button class="pot active" data-pot="sand">SANDSTONE</button><button class="pot" data-pot="ink">INK</button><button class="pot" data-pot="clay">CLAY</button></div></div>
+<button class="new-tree" id="newTree"><span>✦</span> Grow a new tree <span>↻</span></button>
+</aside></main><footer><span>MADE FOR SLOW MOMENTS</span><span>THE ART OF GROWING, QUIETLY.</span><span>✳ &nbsp; TAKE A BREATH</span></footer></div>
+<script type="module" src="app.js"></script></body></html>
