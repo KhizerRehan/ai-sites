@@ -21,6 +21,7 @@ const starGeo=new THREE.BufferGeometry(), starPositions=[];
 for(let i=0;i<220;i++){const a=Math.random()*Math.PI*2,r=8+Math.random()*23;starPositions.push(Math.cos(a)*r,Math.random()*16-1,Math.sin(a)*r)} starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));scene.add(new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xb2dfbf,size:.055,transparent:true,opacity:.65})));
 const ground = new THREE.Mesh(new THREE.PlaneGeometry(11.1,11.1),new THREE.MeshBasicMaterial({visible:false,side:THREE.DoubleSide}));ground.rotation.x=-Math.PI/2;ground.position.y=.03;scene.add(ground);
 let selected=0, plants=[], angle=.55, elevation=.88, dragging=false, moved=false, downX=0, downY=0, lastX=0, lastY=0;
+let audio,master,playing=false,nextBeat=0,beatIndex=0;
 const kinds=[{color:0xb6edb9,petals:6,scale:.25,type:'sine',notes:[261.63,329.63,392,523.25]},{color:0xffb59a,petals:7,scale:.3,type:'triangle',notes:[220,277.18,329.63,440]},{color:0xc2b5ff,petals:5,scale:.28,type:'sine',notes:[164.81,196,246.94,329.63]},{color:0xffdc82,petals:8,scale:.2,type:'triangle',notes:[392,493.88,587.33,783.99]}];
 function addPlant(x,z,kind=selected){if(plants.length>=32){announce('The garden is full. Remove a bloom to plant another.');return} const cfg=kinds[kind], group=new THREE.Group();group.position.set(x,0,z);let height=.85+Math.random()*.7;
 const stemCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(0,0,0),new THREE.Vector3(.08,height*.5,0),new THREE.Vector3(0,height,0)]);const stem=new THREE.Mesh(new THREE.TubeGeometry(stemCurve,12,.025,6,false),new THREE.MeshStandardMaterial({color:0x83b795,roughness:.8}));group.add(stem);
@@ -34,7 +35,6 @@ function updateCount(){$('#count').textContent=String(plants.length).padStart(2,
 function announce(message){$('#announcement').textContent=message}
 function randomPlant(){const a=Math.random()*Math.PI*2,r=Math.sqrt(Math.random())*4.8;addPlant(Math.cos(a)*r,Math.sin(a)*r)}
 for(const p of [[-1.6,-.7,0],[1.2,.5,1],[.1,-1.8,2]])addPlant(...p);$('#hint').classList.remove('hidden');
-let audio,master,playing=false,nextBeat=0,beatIndex=0;
 function initAudio(){if(audio)return;audio=new (window.AudioContext||window.webkitAudioContext)();master=audio.createGain();master.gain.value=$('#volume').value/100*.28;master.connect(audio.destination)}
 function sound(plant,time){if(!audio||!playing)return;const cfg=kinds[plant.kind], osc=audio.createOscillator(), gain=audio.createGain();osc.type=cfg.type;osc.frequency.value=plant.note;gain.gain.setValueAtTime(.0001,time);gain.gain.exponentialRampToValueAtTime(.2,time+.03);gain.gain.exponentialRampToValueAtTime(.0001,time+1.7);osc.connect(gain);gain.connect(master);osc.start(time);osc.stop(time+1.75);plant.pulse=1}
 function tick(){if(!playing||!audio)return;while(nextBeat<audio.currentTime+.1){plants.forEach((p,i)=>{if((beatIndex+i*2+p.beat)%8===0)sound(p,nextBeat)});nextBeat+=60/Number($('#tempo').value)/2;beatIndex++}}
