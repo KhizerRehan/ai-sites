@@ -1,0 +1,7 @@
+# After Hours — creative brief
+
+Create a distinctive, immersive website for **After Hours**, a fictional late-night jazz club. The experience should feel like discovering a secret room above the city: cinematic film noir, velvet shadows, warm amber stage lights, oxblood, expressive oversized jazz-poster typography, and grainy, atmospheric photography. Compose the page like a music editorial rather than a template, with dramatic shifts in scale, asymmetry, and moments of quiet.
+
+Open on a cinematic hero with a strong headline, clear invitation to explore the program, and an atmospheric original image. Include a scrolling marquee, a carefully typeset introduction to the club, and a fictional performance calendar that can be filtered by musical mood. Each performance should open an accessible detail dialog with a demo booking form; clearly explain that no real reservation is made. Add a substantial section evoking the room and listening culture, practical sample visit details, and a memorable footer. All artists, events, addresses, and details must be visibly fictional or illustrative.
+
+Use a responsive design that preserves the editorial atmosphere on mobile. Implement keyboard-accessible controls, a visible focus indicator, appropriately labeled dialogs, Escape-to-close, semantic HTML, and reduced-motion support. Make the functional calendar filter and demo booking feedback work without a backend. Avoid dead controls, fake live availability, and illegible text. Verify the interactions and deployment; note any inability to perform browser QA.
