@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tidal Sculptor — an ocean of your own</title>
+<meta name="description" content="Shape an archipelago, one island at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="world" aria-label="Interactive three-dimensional ocean. Select a tool and drag to sculpt islands."></div>
+<div class="wash"></div>
+<header><a class="brand" href="#" aria-label="Tidal Sculptor home"><span class="mark">✳</span><span>TIDAL<br>SCULPTOR</span></a><div class="header-right"><span class="weather"><i></i> A LITTLE WORLD, ALL YOURS</span><button id="reset" class="text-button">Start over <span>↺</span></button></div></header>
+<main>
+<section class="intro"><div class="eyebrow"><span>THE ART OF SLOWING DOWN</span><b>✳</b></div><h1>Make space<br>for <em>wonder.</em></h1><p>Somewhere between the sea and the sky, a little world is waiting for you.</p><div class="instruction"><span class="finger">✺</span><span><b>Make your mark</b><br>Choose a tool, then draw on the water.</span></div></section>
+<aside class="readout"><div class="compass"><span>N</span><div>✳</div><small>S</small></div><div class="readout-bottom"><span>YOUR PRIVATE PARADISE</span><strong id="island-label">A world in the making</strong><div class="line"></div><span>TAKE YOUR TIME. THE SEA CAN WAIT.</span></div></aside>
+</main>
+<div class="hint" id="hint">DRAG ON THE SEA TO SCULPT <span>✦</span></div>
+<section class="console" aria-label="Sculpting controls"><div class="console-heading"><div><span class="micro">THE ARCHIPELAGO STUDIO</span><h2>Shape your escape<span>.</span></h2></div><p>A place to make, play, and simply be.</p></div><div class="controls"><div class="control tool-control"><span class="label">01 &nbsp; CHOOSE YOUR TOOL</span><div class="tools" role="group" aria-label="Sculpting tool"><button class="tool active" data-tool="raise" aria-pressed="true"><span class="tool-icon">◒</span><span>Raise land</span></button><button class="tool" data-tool="lower" aria-pressed="false"><span class="tool-icon">◓</span><span>Carve away</span></button><button class="tool" data-tool="smooth" aria-pressed="false"><span class="tool-icon">≈</span><span>Soften</span></button></div></div><div class="control range-control"><label class="label" for="tide">02 &nbsp; THE TIDE <output id="tide-value">LOW</output></label><input id="tide" type="range" min="-0.35" max="0.6" step="0.01" value="0"><div class="range-ends"><span>LOW TIDE</span><span>HIGH TIDE</span></div></div><div class="control range-control"><label class="label" for="time">03 &nbsp; THE LIGHT <output id="time-value">GOLDEN</output></label><input id="time" type="range" min="0" max="100" value="45"><div class="range-ends"><span>DAYBREAK</span><span>AFTERGLOW</span></div></div><div class="control action-control"><span class="label">NEED A LITTLE INSPIRATION?</span><button id="surprise">Make me an island <span>✦</span></button></div></div><div class="console-foot"><span>AN EXERCISE IN DOING NOTHING MUCH</span><span>MADE FOR THE CURIOUS &nbsp; ✳</span></div></section>
+<div id="fallback" hidden>We couldn’t start the 3D ocean. Please try a browser with WebGL enabled.</div>
+<script type="module" src="app.js"></script>
+</body></html>
