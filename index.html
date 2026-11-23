@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090d18">
+<title>Planet Forge — Make a world of your own</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage" aria-label="Interactive three dimensional planet. Drag to rotate."></div><div class="vignette"></div>
+<header class="topbar"><a class="brand" href="#" aria-label="Planet Forge home"><span class="brand-icon">✳</span><span>PLANET<br>FORGE</span></a><span class="edition">AN INTERACTIVE COSMIC PLAYGROUND</span><button id="random" class="random">✦ &nbsp; Surprise me</button></header>
+<main>
+<section class="intro"><p class="eyebrow"><span class="live"></span> WORLD BUILDING STUDIO</p><h1>A little universe,<br><em>made by you.</em></h1><p>Somewhere between science and imagination, a new world is waiting to be discovered.</p></section>
+<aside class="panel" aria-label="Planet customization"><div class="panel-heading"><div><p class="eyebrow">YOUR WORLD</p><h2>Planet foundry</h2></div><span class="panel-star">✳</span></div><p class="panel-copy">Shape a place that has never existed.</p>
+<div class="section"><div class="label-row"><label>CHOOSE A WORLD</label><span id="world-number">01 / 04</span></div><div class="presets" role="group" aria-label="Planet style"><button class="preset active" data-preset="0"><span class="swatch sw1"></span><span>Terra</span></button><button class="preset" data-preset="1"><span class="swatch sw2"></span><span>Ember</span></button><button class="preset" data-preset="2"><span class="swatch sw3"></span><span>Glacier</span></button><button class="preset" data-preset="3"><span class="swatch sw4"></span><span>Nebula</span></button></div></div>
+<div class="section compact"><div class="label-row"><label for="terrain">TERRAIN</label><output id="terrain-value">58%</output></div><input id="terrain" type="range" min="0" max="100" value="58"><div class="range-label"><span>OCEANIC</span><span>CONTINENTAL</span></div></div>
+<div class="section compact"><div class="label-row"><label for="atmosphere">ATMOSPHERE</label><output id="atmosphere-value">70%</output></div><input id="atmosphere" type="range" min="0" max="100" value="70"><div class="range-label"><span>BARE</span><span>GLOWING</span></div></div>
+<div class="section compact"><div class="label-row"><label for="speed">ROTATION</label><output id="speed-value">45%</output></div><input id="speed" type="range" min="0" max="100" value="45"><div class="range-label"><span>STILL</span><span>SWIFT</span></div></div>
+<div class="section ring-row"><div><label for="rings">ORBITAL RINGS</label><p>A little extra cosmic drama</p></div><button id="rings" class="toggle on" role="switch" aria-checked="true" aria-label="Orbital rings"><span></span></button></div>
+<div class="panel-footer"><span>✧ &nbsp; BUILT FROM STARDUST</span><button id="reset">Reset world</button></div></aside>
+<div class="planet-caption"><span class="caption-line"></span><div><span class="eyebrow">CURRENT CREATION</span><h2 id="planet-name">Terra <i>01</i></h2><p id="planet-description">A blue world with a wild heart.</p></div></div>
+<div class="hint"><span class="drag-icon">↔</span><span>DRAG TO EXPLORE<br><small>Scroll to zoom</small></span></div>
+</main><footer><span>IMAGINED IN THE COSMOS &nbsp; ✦</span><span>NO TWO WORLDS ALIKE</span></footer>
+<script type="module" src="app.js"></script>
+</body></html>
