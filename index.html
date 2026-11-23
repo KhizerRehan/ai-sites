@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#032c38"><title>Coral Atelier — grow a little wonder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="atelier">
+ <div id="stage" aria-label="Interactive underwater coral garden"></div><div class="water-wash"></div>
+ <header><a class="brand" href="#" aria-label="Coral Atelier home"><span class="brand-mark">✳</span><span>CORAL<br>ATELIER</span></a><div class="header-note"><span class="live-dot"></span> AN UNDERWATER PLAYGROUND</div><button class="help" id="help" aria-label="Show instructions">?</button></header>
+ <section class="intro"><div class="eyebrow"><span>✦</span> A LITTLE WORLD OF YOUR OWN</div><h1>Make waves.<br><em>Grow wonder.</em></h1><p>Plant a little life beneath the surface.<br>Every reef starts somewhere.</p><div class="gesture"><span class="gesture-icon">✧</span><span><strong>Tap the ocean floor</strong><br>to plant your coral</span></div></section>
+ <aside class="panel" aria-label="Reef controls"><div class="panel-top"><div><div class="overline">THE REEF STUDIO</div><h2>Make it yours</h2></div><span class="panel-star">✳</span></div><div class="rule"></div>
+ <fieldset><legend>01 <span>CHOOSE A CORAL</span></legend><div class="species" role="group" aria-label="Coral type"><button class="species-btn active" data-type="branch" aria-pressed="true"><span class="species-icon">♧</span><strong>Branch</strong><small>Reach for light</small></button><button class="species-btn" data-type="fan" aria-pressed="false"><span class="species-icon">♕</span><strong>Sea fan</strong><small>Go with the flow</small></button><button class="species-btn" data-type="bloom" aria-pressed="false"><span class="species-icon">✿</span><strong>Bloom</strong><small>Soft &amp; sculptural</small></button></div></fieldset>
+ <fieldset><legend>02 <span>PICK A PIGMENT</span></legend><div class="swatches" role="group" aria-label="Coral color"><button class="swatch active" data-color="#ff806f" style="--color:#ff806f" aria-label="Coral pink" aria-pressed="true"></button><button class="swatch" data-color="#f9c366" style="--color:#f9c366" aria-label="Sunshine yellow" aria-pressed="false"></button><button class="swatch" data-color="#c49af0" style="--color:#c49af0" aria-label="Lilac" aria-pressed="false"></button><button class="swatch" data-color="#7ad5c4" style="--color:#7ad5c4" aria-label="Seafoam" aria-pressed="false"></button><button class="swatch" data-color="#f28cb7" style="--color:#f28cb7" aria-label="Rose" aria-pressed="false"></button></div></fieldset>
+ <fieldset><legend>03 <span>MAKE IT GROW</span><output id="growth-value">70%</output></legend><input id="growth" type="range" min="35" max="100" value="70" aria-label="Growth size"><div class="range-label"><span>SMALL WONDER</span><span>BIG BLOOM</span></div></fieldset>
+ <div class="panel-actions"><button id="surprise" class="primary">✦ &nbsp; Plant a surprise</button><div class="secondary"><button id="undo">Undo last</button><button id="clear">Clear reef</button></div></div></aside>
+ <div class="bottom"><div class="depth"><span>◒</span><div>YOUR LIVING REEF<br><strong id="count">03 CORALS GROWING</strong></div></div><div class="bottom-center">MADE FOR A MOMENT OF <em>quiet curiosity</em></div><button class="light-control" id="light">☼ <span>LIGHT: SHALLOWS</span></button></div>
+ <div class="toast" id="toast" role="status" aria-live="polite"></div>
+ <div class="modal" id="modal" hidden><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="close" id="close" aria-label="Close instructions">×</button><span class="modal-symbol">✳</span><div class="overline">WELCOME TO THE ATELIER</div><h2 id="modal-title">A little reef, made by you.</h2><p>Choose a coral and a color, then tap the sandy floor to plant it. Adjust the growth slider for your next creation. Drag across the water to look around, or plant a surprise and see what grows.</p><button id="start" class="primary">Let’s grow</button></div></div>
+</main><script type="module" src="app.js"></script>
+</body></html>
