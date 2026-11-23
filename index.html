@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071923"><meta name="description" content="Plant a little music in an after-dark garden.">
+  <title>Sound Garden — Plant a little music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <div id="scene" tabindex="0" role="application" aria-label="Interactive musical garden. Click to plant or press Enter to add a flower; drag to rotate."></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="topbar"><a class="brand" href="#" aria-label="Sound Garden home"><span class="brand-mark">✳</span><span>SOUND<br>GARDEN</span></a><div class="top-note">A LITTLE WORLD OF SOUND <span>✦</span> MADE FOR SLOWING DOWN</div><button class="sound-toggle" id="play" aria-pressed="false"><span class="play-icon">▶</span><span id="play-label">Start sound</span></button></header>
+    <section class="intro"><div class="eyebrow"><span class="eyebrow-dot"></span> AN INTERACTIVE SOUND EXPERIMENT</div><h1>Plant a little<br><em>music.</em></h1><p>A garden that grows in notes.<br>Plant a few blooms and listen to<br>what happens between them.</p><div class="instruction"><span>✳</span><div><b>MAKE YOUR FIRST MARK</b><br>Tap anywhere on the garden to plant.<br>Drag to look around.</div></div></section>
+    <aside class="controls" aria-label="Garden controls"><div class="controls-heading"><span>THE GREENHOUSE</span><span>✳</span></div><div class="control-block"><label for="tempo">TEMPO <output id="tempo-value">76 BPM</output></label><input type="range" id="tempo" min="45" max="130" value="76"></div><div class="control-block"><label for="volume">VOLUME <output id="volume-value">65%</output></label><input type="range" id="volume" min="0" max="100" value="65"></div><div class="control-block stats"><span>PLANTED</span><span id="count">00 BLOOMS</span></div><div class="actions"><button id="add">Plant one</button><button id="undo">Undo last</button><button id="clear">Clear garden</button></div></aside>
+    <div class="hint" id="hint">✦ &nbsp; TAP THE GARDEN TO PLANT</div>
+    <section class="palette" aria-label="Choose a sound flower"><div class="palette-heading"><div><span>THE SEED LIBRARY</span><strong>Choose your sound</strong></div><small>01 — 04</small></div><div class="seeds" role="group" aria-label="Sound flower type"><button class="seed active" data-kind="0" aria-pressed="true"><i style="--c:#b6edb9">✳</i><span><b>Bellflower</b><small>SOFT &amp; CLEAR</small></span></button><button class="seed" data-kind="1" aria-pressed="false"><i style="--c:#f7b795">✿</i><span><b>Sunpetal</b><small>WARM &amp; ROUND</small></span></button><button class="seed" data-kind="2" aria-pressed="false"><i style="--c:#c3b8ff">✺</i><span><b>Moonbell</b><small>LOW &amp; DREAMY</small></span></button><button class="seed" data-kind="3" aria-pressed="false"><i style="--c:#f4dc8a">✹</i><span><b>Stardust</b><small>BRIGHT &amp; LIGHT</small></span></button></div></section>
+    <div class="footer-note">A PLACE TO PAUSE &nbsp; / &nbsp; NO TWO GARDENS SOUND ALIKE</div>
+    <div class="sr-only" aria-live="polite" id="announcement"></div>
+  </main><script type="module" src="app.js"></script>
+</body></html>
