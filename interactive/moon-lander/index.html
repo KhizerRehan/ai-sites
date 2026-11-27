@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1222"><title>SOFT LANDING — A lunar landing game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="console">
+<header class="topbar"><div class="wordmark"><span class="mark">✳</span><span>SOFT<br>LANDING</span></div><div class="top-center">AN INTERACTIVE LUNAR MISSION <span> / </span> 1969—∞</div><button id="reset" class="reset" type="button">↻ &nbsp; NEW MISSION</button></header>
+<section class="mission">
+<div class="mission-copy"><span class="eyebrow"><i></i> MISSION 01 &nbsp; / &nbsp; THE MOON</span><h1>Easy<br><em>does it.</em></h1><p>One small landing.<br>One giant test of patience.</p></div>
+<div class="stage" id="stage" aria-label="Lunar landing game"><div id="scene"></div><div class="crosshair c1">+</div><div class="crosshair c2">+</div><div class="stage-top"><span>LIVE FEED <b>●</b></span><span>CAM 01 / LUNAR SURFACE</span></div><div class="stage-bottom"><span>TRANQUILITY BASE</span><span>0° 41′ 15″ N</span></div><div class="message" id="message" aria-live="polite"><span id="messageTag">MISSION CONTROL</span><strong id="messageTitle">Ready for descent?</strong><p id="messageText">Guide your lander to the glowing pad. Keep your speed gentle and your ship upright.</p><button id="start" type="button">BEGIN DESCENT <span>✳</span></button></div></div>
+<aside class="telemetry"><div class="tele-head"><span>FLIGHT DATA</span><span>● LIVE</span></div><div class="readout"><span>ALTITUDE</span><div><strong id="altitude">000</strong><small> M</small></div><div class="rule"><i id="altbar"></i></div></div><div class="readout"><span>VERTICAL SPEED</span><div><strong id="velocity">0.0</strong><small> M/S</small></div><p>Keep below 4.5 m/s</p></div><div class="readout"><span>FUEL REMAINING</span><div><strong id="fuel">100</strong><small> %</small></div><div class="fuelbar"><i id="fuelbar"></i></div></div><div class="status"><span>MISSION STATUS</span><strong id="status">STANDBY</strong><p id="statusText">Awaiting launch instructions.</p></div></aside>
+</section>
+<footer class="bottom"><div class="instructions"><span class="footlabel">HOW TO FLY</span><p>Use <kbd>←</kbd> <kbd>→</kbd> to steer and <kbd>↑</kbd> to thrust.<br><span>Touch controls work too. Save some fuel for landing.</span></p></div><div class="controls" aria-label="Flight controls"><button id="left" type="button" aria-label="Rotate left">↶<small>LEFT</small></button><button id="thrust" class="thrust" type="button" aria-label="Fire thruster">✳<small>THRUST</small></button><button id="right" type="button" aria-label="Rotate right">↷<small>RIGHT</small></button></div><div class="footer-note"><span>MADE FOR EXPLORERS</span><strong>TAKE IT SLOW <b>✳</b></strong></div></footer>
+</main><script type="module" src="app.js"></script>
+</body></html>

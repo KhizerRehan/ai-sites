@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102f2a"><meta name="description" content="Grow a little world under glass.">
+  <title>Glass Garden — a little world of your own</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar"><a class="brand" href="#" aria-label="Glass Garden home"><span class="brand-mark">✳</span><span>GLASS<br>GARDEN</span></a><div class="top-note">A LITTLE WORLD OF YOUR OWN <span>✦</span></div><div class="edition">A DIGITAL GREENHOUSE <span> / </span> EST. TODAY</div></header>
+    <main class="workspace">
+      <section class="intro"><div class="eyebrow"><span class="dot"></span> YOUR PERSONAL GREENHOUSE</div><h1>Grow a little<br><em>wonder.</em></h1><p>A pocket-sized garden, made by you. Choose a bloom and plant something beautiful under glass.</p><div class="instruction"><span class="hand">✳</span><div><strong>MAKE IT YOURS</strong><br>Tap the soil to plant.<br>Drag anywhere to turn the garden.</div></div></section>
+      <section class="stage" aria-label="Interactive glass terrarium"><div class="halo"></div><div id="scene" aria-label="3D garden. Select a bloom and click or tap the soil to plant it."></div><div class="stage-label"><span>THE GLASSHOUSE</span><span>✦</span><span id="count">3 BLOOMS GROWING</span></div><div class="stage-hint">DRAG TO ROTATE <span> · </span> TAP SOIL TO PLANT</div><div id="message" role="status" aria-live="polite"></div></section>
+      <aside class="panel"><div class="panel-title"><div><span class="overline">THE GARDENER'S TOOLBOX</span><h2>Make it bloom<span>.</span></h2></div><span class="panel-spark">✳</span></div><div class="rule"></div><div class="section-head"><span>01 / PICK A BLOOM</span><span>SELECT ONE</span></div><div class="species" role="group" aria-label="Choose a bloom"><button class="species-btn active" data-type="daisy" aria-pressed="true"><span class="spec-icon daisy">✿</span><span><strong>Moon Daisy</strong><small>Soft & luminous</small></span><span class="radio"></span></button><button class="species-btn" data-type="bell" aria-pressed="false"><span class="spec-icon bell">✾</span><span><strong>Glass Bell</strong><small>A little bit magic</small></span><span class="radio"></span></button><button class="species-btn" data-type="star" aria-pressed="false"><span class="spec-icon star">✳</span><span><strong>Sun Star</strong><small>Made of sunshine</small></span><span class="radio"></span></button></div><div class="rule"></div><div class="section-head"><span>02 / SET THE MOOD</span><span>LIGHTING</span></div><div class="moods" role="group" aria-label="Garden lighting"><button class="mood active" data-light="morning" aria-pressed="true"><span>☀</span>Morning</button><button class="mood" data-light="golden" aria-pressed="false"><span>✺</span>Golden</button><button class="mood" data-light="moon" aria-pressed="false"><span>☾</span>Moonlight</button></div><div class="rule"></div><div class="actions"><button id="undo">↶ <span>Undo last bloom</span></button><button id="reset">↺ <span>Start fresh</span></button></div><p class="panel-footer">GOOD THINGS TAKE TIME <span>✦</span><br>AND A LITTLE BIT OF MAGIC.</p></aside>
+    </main><footer><span>AN EXPERIMENT IN SLOWING DOWN</span><span>MADE FOR CURIOUS MINDS <span class="footer-star">✳</span></span><span>TAKE A MOMENT. STAY A WHILE.</span></footer>
+  </div><script type="module" src="app.js"></script>
+</body></html>

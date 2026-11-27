@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#221c1a"><meta name="description" content="A little workshop for making a candle, one quiet choice at a time.">
+  <title>Still Flame — Candle Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="studio">
+    <header class="topbar"><a class="brand" href="#" aria-label="Still Flame home"><span class="brand-mark">✳</span><span>STILL FLAME<small>THE CANDLE STUDIO</small></span></a><div class="top-note"><span class="status-dot"></span>A LITTLE MOMENT FOR YOU</div><button class="text-button" id="reset">START AGAIN <span>↺</span></button></header>
+    <section class="intro"><p class="eyebrow"><span>THE ART OF SLOWING DOWN</span></p><h1>Make a little<br><em>room for calm.</em></h1><p class="intro-copy">A quiet ritual, made by you. Choose your vessel and wax, then bring your candle to life.</p><div class="instruction"><span class="instruction-icon">↻</span><span>DRAG TO TURN YOUR CREATION</span></div></section>
+    <section class="stage" aria-label="Interactive three-dimensional candle preview"><div id="scene"></div><div class="stage-halo"></div><div class="stage-label"><span>HAND POURED</span><i></i><span>MADE BY YOU</span></div><p class="stage-hint" id="stage-hint">YOUR VESSEL IS READY</p></section>
+    <aside class="controls" aria-label="Candle customization"><div class="panel-heading"><div><p class="eyebrow">YOUR PERSONAL RITUAL</p><h2>At the workbench<span>.</span></h2></div><span class="sparkle">✳</span></div><p class="panel-intro">Thoughtful details make it yours.</p>
+      <fieldset><legend><span>01</span> Choose a vessel</legend><div class="vessel-grid"><button class="choice active" data-vessel="stone" aria-pressed="true"><span class="vessel-swatch stone"></span><strong>Stone</strong><small>Warm ceramic</small></button><button class="choice" data-vessel="amber" aria-pressed="false"><span class="vessel-swatch amber"></span><strong>Amber</strong><small>Smoked glass</small></button><button class="choice" data-vessel="ink" aria-pressed="false"><span class="vessel-swatch ink"></span><strong>Ink</strong><small>Matte ceramic</small></button></div></fieldset>
+      <fieldset><legend><span>02</span> Pick your wax</legend><div class="wax-row"><button class="wax active" data-wax="vanilla" aria-label="Vanilla wax" aria-pressed="true"><i style="--swatch:#eee0bd"></i><span>Vanilla</span></button><button class="wax" data-wax="rose" aria-label="Rose wax" aria-pressed="false"><i style="--swatch:#cb9285"></i><span>Rose</span></button><button class="wax" data-wax="sage" aria-label="Sage wax" aria-pressed="false"><i style="--swatch:#9ba98d"></i><span>Sage</span></button><button class="wax" data-wax="honey" aria-label="Honey wax" aria-pressed="false"><i style="--swatch:#d6a45f"></i><span>Honey</span></button></div></fieldset>
+      <fieldset class="flame-field"><legend><span>03</span> Set the mood</legend><div class="mood-row"><label for="flame-size">FLAME GLOW</label><input id="flame-size" type="range" min="0.65" max="1.5" value="1" step="0.05"><span id="glow-value">SOFT</span></div></fieldset>
+      <button class="primary" id="action"><span>Pour your candle</span><span class="button-icon">✳</span></button><p class="action-caption" id="action-caption">A SMALL ACT OF MAKING, JUST FOR YOU.</p>
+    </aside>
+    <footer><span>CRAFTED FOR THE QUIET MOMENTS</span><span>TAKE YOUR TIME <span class="footer-star">✳</span> STAY A WHILE</span><span>EST. IN A MOMENT OF STILLNESS</span></footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body></html>

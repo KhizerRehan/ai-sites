@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ORI — The quiet art of folding</title>
+  <meta name="description" content="A small interactive origami studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar"><a class="brand" href="#" aria-label="ORI studio home"><span class="brand-mark">折</span><span>ORI <small>FOLDING STUDIO</small></span></a><span class="top-note">A LITTLE SPACE TO MAKE SOMETHING</span><span class="edition">THE CRANE <i>✳</i></span></header>
+  <main class="workspace">
+    <section class="intro"><div class="eyebrow"><span></span> THE ART OF SLOWING DOWN</div><h1>A little<br><em>fold</em> of<br>wonder<span>.</span></h1><p>One sheet, a few folds, and a little imagination. Make a paper crane at your own pace.</p><div class="intro-bottom"><span class="stamp">折<br><small>ORI</small></span><p>In Japan, the crane is a symbol of hope and good fortune.</p></div></section>
+    <section class="stage" aria-label="Interactive 3D origami crane"><div class="stage-label"><span>YOUR PAPER CRANE</span><span>MADE BY YOU ✳</span></div><div id="canvas-wrap"><canvas id="scene" aria-label="Three-dimensional paper crane. Drag to rotate."></canvas></div><div class="stage-bottom"><span class="drag-icon">↔</span><span>DRAG TO ROTATE</span><span class="stage-line"></span><span>TAKE YOUR TIME</span></div></section>
+    <aside class="controls"><div class="aside-top"><span>THE WORKTABLE</span><span>✳</span></div><h2>Make it<br><em>your own.</em></h2><p class="subtext">A little ritual, just for you.</p><div class="rule"></div><div class="control-title"><span>01 / PAPER</span><span id="color-name">VERMILION</span></div><div class="swatches" role="group" aria-label="Paper color"><button class="swatch active" style="--sw:#c94d39" data-color="vermillion" aria-label="Vermilion paper" aria-pressed="true"></button><button class="swatch" style="--sw:#e8b2a7" data-color="blush" aria-label="Blush paper" aria-pressed="false"></button><button class="swatch" style="--sw:#d3ad58" data-color="ochre" aria-label="Ochre paper" aria-pressed="false"></button><button class="swatch" style="--sw:#576f67" data-color="moss" aria-label="Moss paper" aria-pressed="false"></button><button class="swatch" style="--sw:#637d9a" data-color="indigo" aria-label="Indigo paper" aria-pressed="false"></button></div><div class="rule"></div><div class="control-title"><span>02 / THE FOLD</span><span id="step-number">01 — 04</span></div><h3 id="step-title">Begin with a square</h3><p id="step-description" class="step-description">Every beautiful thing starts somewhere. Here is your sheet of paper.</p><input id="progress" type="range" min="0" max="100" value="0" aria-label="Fold progress"><div class="range-labels"><span>UNFOLDED</span><span>CRANE</span></div><div class="step-controls"><button id="prev" aria-label="Previous fold">←</button><button id="play" class="play">PLAY THE FOLDS <span>▶</span></button><button id="next" aria-label="Next fold">→</button></div><button id="reset" class="reset">START AGAIN <span>↺</span></button><div class="aside-foot">A MOMENT FOR MAKING <span>✳</span></div></aside>
+  </main><footer><span>ORI STUDIO &nbsp; / &nbsp; A DIGITAL PAPER EXPERIENCE</span><span>FOLD SOMETHING BEAUTIFUL TODAY</span></footer>
+</div><script type="module" src="app.js"></script>
+</body></html>

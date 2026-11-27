@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#162a37"><meta name="description" content="Make a little winter world of your own.">
+<title>Snowfall — a little world of winter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+<header class="topbar"><a class="brand" href="#" aria-label="Snowfall home"><span class="brand-icon">✳</span><span>SNOWFALL <small>THE LITTLE WINTER STUDIO</small></span></a><div class="top-note"><span class="dot"></span> A MOMENT TO YOURSELF</div></header>
+<main>
+<section class="intro"><div class="eyebrow"><span>❆</span> THE SNOW GLOBE STUDIO</div><h1>A little world,<br><em>all your own.</em></h1><p>Make a quiet place to escape to. Choose a scene, set the mood, and give it a little shake.</p><div class="intro-line"><span></span> MADE FOR DAYDREAMING</div></section>
+<section class="stage" aria-label="Interactive snow globe"><div class="stage-glow"></div><canvas id="world" aria-label="A three-dimensional snow globe. Drag to turn it."></canvas><div class="stage-caption"><span>✧</span> DRAG TO TURN YOUR WORLD</div><div class="stage-number">A WORLD IN YOUR HANDS <span>✳</span></div></section>
+<aside class="controls" aria-label="Customize your snow globe"><div class="panel-heading"><div><div class="eyebrow">YOUR LITTLE WORLD</div><h2>Make it yours.</h2></div><span class="heading-snow">✳</span></div><div class="divider"></div>
+<div class="control-block"><div class="control-title"><span>CHOOSE A SCENE</span><small>01 / 03</small></div><div class="scene-list" role="group" aria-label="Choose a scene"><button class="scene active" data-scene="forest" aria-pressed="true"><span class="scene-icon">♧</span><span><strong>Evergreen woods</strong><small>A forest in the hush</small></span><i>✳</i></button><button class="scene" data-scene="village" aria-pressed="false"><span class="scene-icon">⌂</span><span><strong>Little village</strong><small>A warm light in the snow</small></span><i>✳</i></button><button class="scene" data-scene="mountain" aria-pressed="false"><span class="scene-icon">△</span><span><strong>Alpine peaks</strong><small>Somewhere up high</small></span><i>✳</i></button></div></div>
+<div class="divider"></div><div class="control-block"><div class="control-title"><span>SET THE LIGHT</span><small>THE TIME OF DAY</small></div><div class="moods" role="group" aria-label="Set the light"><button class="mood active" data-mood="day" aria-pressed="true"><span>☼</span> Daylight</button><button class="mood" data-mood="dusk" aria-pressed="false"><span>◐</span> Dusk</button><button class="mood" data-mood="night" aria-pressed="false"><span>☾</span> Night</button></div></div>
+<div class="divider"></div><div class="control-block snowfall"><div class="control-title"><label for="snow">SNOWFALL</label><output id="snow-value" for="snow">GENTLE</output></div><input id="snow" type="range" min="0" max="100" value="42" aria-label="Snowfall amount"><div class="range-labels"><span>JUST A FLURRY</span><span>WINTER WONDER</span></div></div>
+<button id="shake" class="shake"><span>✳</span> Shake the globe <span>✳</span></button><p class="panel-note">A little magic, whenever you need it.</p></aside>
+</main><footer><span>COLLECT QUIET MOMENTS <b>✳</b></span><span>DESIGNED FOR A LITTLE ESCAPE</span><span>TAKE YOUR TIME. STAY A WHILE.</span></footer>
+</div><script type="module" src="app.js"></script>
+</body></html>

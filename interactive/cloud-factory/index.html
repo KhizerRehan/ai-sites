@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#a9d7ef"><title>Cloud Factory — A little weather workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-sky="day">
+<div class="app">
+<header class="topbar"><a class="brand" href="#" aria-label="Cloud Factory home"><span class="brand-icon">✳</span><span>CLOUD<br>FACTORY</span></a><div class="top-note"><span class="live-dot"></span> A LITTLE WEATHER WORKSHOP</div><div class="edition">EST. ABOVE THE CLOUDS &nbsp; ✦</div></header>
+<main>
+<section class="intro"><div class="eyebrow"><span>THE FORECAST IS YOURS</span><span class="line"></span> OPEN DAILY</div><h1>A little<br><em>head in</em><br>the clouds<span class="period">.</span></h1><p>Make some room for a little wonder.<br>Dream up a sky, one cloud at a time.</p><div class="instructions"><span class="hand">✺</span><span>DRAG THE SKY TO LOOK AROUND<br><b>EVERY CLOUD IS ONE OF A KIND</b></span></div></section>
+<section class="stage" aria-label="Interactive 3D cloud factory"><div id="scene"></div><div class="stage-top"><span>THE CLOUD WORKS</span><span>NO. 014 / IN THE SKY</span></div><div class="stage-bottom"><span><i></i> FACTORY ONLINE</span><span>MADE WITH A LITTLE IMAGINATION</span></div><div class="stage-hint">DRAG TO ORBIT <span>↔</span></div><div class="counter"><span id="count">00</span><small>CLOUDS<br>MADE TODAY</small></div></section>
+<aside class="console"><div class="console-header"><div><div class="eyebrow">YOUR LITTLE CONTROL ROOM</div><h2>Make it<br><em>yours.</em></h2></div><span class="console-star">✳</span></div><div class="rule"></div><div class="control"><div class="control-title"><label for="fluff">CLOUD FLUFF</label><span id="fluffValue">EXTRA FLUFFY</span></div><input id="fluff" type="range" min="1" max="3" value="2" step="1"><div class="range-labels"><span>WISPY</span><span>SOFT</span><span>PLUSH</span></div></div><div class="control"><div class="control-title"><span>SKY MOOD</span><span class="muted">PICK ONE</span></div><div class="sky-options" role="group" aria-label="Sky mood"><button class="sky active" data-preset="day" aria-pressed="true"><span class="swatch day"></span>Blue hour</button><button class="sky" data-preset="peach" aria-pressed="false"><span class="swatch peach"></span>Peachy</button><button class="sky" data-preset="night" aria-pressed="false"><span class="swatch night"></span>After dark</button></div></div><div class="control weather"><div><div class="control-title"><label for="rain">A LITTLE RAIN</label></div><p>For growing things, of course.</p></div><button id="rain" class="toggle" role="switch" aria-checked="false" aria-label="Toggle rain"><span></span></button></div><button class="make" id="make"><span>MAKE A CLOUD</span><span class="make-icon">✳</span></button><button class="clear" id="clear">CLEAR THE SKY <span>↺</span></button><div class="console-footer"><span>100% CHANCE OF DELIGHT</span><span>☼</span></div></aside>
+</main><footer><span>MADE FOR DAYDREAMERS EVERYWHERE</span><span>TAKE YOUR TIME UP HERE &nbsp; ☁</span><span>© THE CLOUD FACTORY</span></footer>
+</div><script type="module" src="app.js"></script></body></html>

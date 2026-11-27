@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ebe8dc"><title>STILL / MOVE — a mobile studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="studio">
+<header><a class="brand" href="#" aria-label="Still Move studio home"><span class="brandmark">✳</span><span>STILL <i>/</i> MOVE<small>AN EXERCISE IN BALANCE</small></span></a><span class="header-note">An object in motion, made by you.</span><span class="edition">DIGITAL OBJECTS &nbsp; / &nbsp; NO. 01</span></header>
+<section class="intro"><div class="eyebrow"><span class="dot"></span> THE MOBILE STUDIO</div><h1>Make room<br>for <em>movement.</em></h1><p>Compose a little moment of balance.<br>Then let the air do the rest.</p></section>
+<div class="stage" id="stage" aria-label="Interactive three-dimensional hanging mobile. Drag to rotate."><div class="stage-caption"><span>YOUR SCULPTURE</span><span id="caption">THE COMPOSITION <b>01</b></span></div><div id="canvas"></div><div class="stage-bottom"><span>✳ &nbsp; A STUDY IN SLOWING DOWN</span><span>DRAG TO ROTATE <span class="rotate">↻</span></span></div></div>
+<aside class="panel"><div class="panel-heading"><div><span class="eyebrow">THE WORKBENCH</span><h2>Shape the air.</h2></div><span class="panel-icon">✳</span></div><p class="panel-desc">Every piece finds its place.</p><div class="rule"></div>
+<div class="control"><div class="label-row"><label for="form">01 &nbsp; FORM</label><span id="form-name">BALANCE</span></div><div class="segmented" id="form" role="group" aria-label="Choose sculpture form"><button class="active" data-form="balance" aria-pressed="true">Balance</button><button data-form="arc" aria-pressed="false">Arc</button><button data-form="play" aria-pressed="false">Play</button></div></div>
+<div class="control"><div class="label-row"><span>02 &nbsp; PALETTE</span><span id="palette-name">TERRA</span></div><div class="swatches" role="group" aria-label="Choose color palette"><button class="swatch active" data-palette="terra" aria-label="Terra palette" aria-pressed="true"><span style="--a:#bd4e30;--b:#283e37;--c:#e3b854"></span></button><button class="swatch" data-palette="marine" aria-label="Marine palette" aria-pressed="false"><span style="--a:#276478;--b:#9abeb8;--c:#ecb86f"></span></button><button class="swatch" data-palette="mono" aria-label="Ink palette" aria-pressed="false"><span style="--a:#202b28;--b:#8d9a8a;--c:#eee8d8"></span></button><button class="swatch" data-palette="orchard" aria-label="Orchard palette" aria-pressed="false"><span style="--a:#ac4960;--b:#e7a969;--c:#6c7950"></span></button></div></div>
+<div class="control"><div class="label-row"><label for="breeze">03 &nbsp; BREEZE</label><span id="breeze-value">GENTLE</span></div><input id="breeze" type="range" min="0" max="100" value="32"><div class="range-labels"><span>STILL</span><span>WILD</span></div></div>
+<div class="control material"><div class="label-row"><label for="finish">04 &nbsp; FINISH</label></div><select id="finish"><option value="matte">Soft matte</option><option value="metal">Polished metal</option><option value="porcelain">Glazed porcelain</option></select></div>
+<div class="actions"><button id="shuffle">Surprise me <span>✳</span></button><button id="pause" class="secondary" aria-pressed="false">Pause motion</button></div><p class="tip">A small sculpture for a quieter moment.</p></aside>
+<footer><span>MADE FOR THE SPACE BETWEEN THINGS</span><span>TAKE A BREATH &nbsp; · &nbsp; STAY A WHILE</span><span>STILL / MOVE © 2026</span></footer>
+</main><script type="module" src="app.js"></script>
+</body></html>

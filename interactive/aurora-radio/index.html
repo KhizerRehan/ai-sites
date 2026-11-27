@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071b25">
+<title>Aurora Radio — tune into the night</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+ <canvas id="sky" aria-label="Animated northern lights. Drag across the sky to shape the aurora."></canvas>
+ <div class="vignette"></div>
+ <header><a class="brand" href="#" aria-label="Aurora Radio home"><span class="mark">✳</span><span>AURORA<br>RADIO</span></a><div class="topnote"><span class="live"></span> LIVE FROM THE ARCTIC <span class="slash">/</span> 69° N</div><button id="sound" class="sound" aria-pressed="false"><span class="sound-icon">◖))</span> SOUND OFF</button></header>
+ <section class="intro"><div class="eyebrow"><span class="dash"></span> A LITTLE LIGHT IN THE DARK</div><h1>Tune into<br><em>the night.</em></h1><p>A quiet place to make a little magic.<br>Shape the sky and see where it takes you.</p></section>
+ <div class="hint"><span class="cross">✳</span><span>DRAG ACROSS THE SKY<br><strong>Leave a little wonder behind</strong></span></div>
+ <div class="location"><span>FIELD NOTES <b>001—025</b></span><span>THE SKY IS YOURS TONIGHT</span></div>
+ <section class="console" aria-label="Aurora controls">
+   <div class="console-head"><div><span class="overline">THE NIGHT SHIFT</span><h2>Your sky, your frequency.</h2></div><button id="reset" class="reset">RESET SKY <span>↻</span></button></div>
+   <div class="controls">
+    <fieldset class="colors"><legend>01 &nbsp; COLOUR FREQUENCY</legend><div class="swatches"><button data-color="jade" aria-label="Jade aurora" aria-pressed="true" class="swatch active" style="--color:#7ef2bc"></button><button data-color="violet" aria-label="Violet aurora" aria-pressed="false" class="swatch" style="--color:#c3a1ff"></button><button data-color="rose" aria-label="Rose aurora" aria-pressed="false" class="swatch" style="--color:#f2a5bd"></button><button data-color="ice" aria-label="Ice aurora" aria-pressed="false" class="swatch" style="--color:#8dddf5"></button><span id="color-name">JADE FREQUENCY</span></div></fieldset>
+    <div class="slider-control"><label for="intensity">02 &nbsp; GLOW <output id="intensity-out">72%</output></label><input id="intensity" type="range" min="10" max="100" value="72"></div>
+    <div class="slider-control"><label for="speed">03 &nbsp; DRIFT <output id="speed-out">45%</output></label><input id="speed" type="range" min="0" max="100" value="45"></div>
+    <div class="actions"><button id="pause" aria-pressed="false"><span>Ⅱ</span> PAUSE</button><button id="capture"><span>◎</span> SAVE SKY</button></div>
+   </div><div class="console-foot"><span>AN EXPERIMENT IN STILLNESS</span><span>MADE FOR LOOKING UP &nbsp; ✳</span></div>
+ </section>
+ <div class="fallback" id="fallback" hidden>WebGL is unavailable in this browser. Try a browser with hardware acceleration enabled.</div>
+</main><script type="module" src="app.js"></script>
+</body></html>

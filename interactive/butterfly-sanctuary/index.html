@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#13251e"><title>Wilderwing — Butterfly Sanctuary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header class="top"><a class="brand" href="#" aria-label="Wilderwing home"><span class="brand-mark">✳</span><span>WILDERWING<small>A LITTLE PLACE TO UNWIND</small></span></a><div class="top-right"><span class="live-dot"></span> A LIVING SANCTUARY</div></header>
+  <section class="intro"><p class="eyebrow"><span>✳</span> A MOMENT IN NATURE</p><h1>Let your mind<br><em>take flight.</em></h1><p class="description">A small, wild world made for slowing down. Grow a garden, welcome a few fluttering friends, and stay as long as you like.</p><div class="hint"><span>✧</span><div><strong>Make yourself at home</strong><br>Tap the meadow to plant a flower.<br>Drag to look around.</div></div></section>
+  <section class="scene-wrap" aria-label="Interactive butterfly garden"><div id="scene"></div><div class="scene-caption"><span>THE MEADOW</span><span>✳</span><span id="scene-time">GOLDEN HOUR</span></div><div class="scene-instruction">DRAG TO EXPLORE <span>·</span> TAP TO PLANT</div></section>
+  <aside class="controls"><div class="panel-head"><span>THE GARDEN JOURNAL</span><span>✳</span></div><h2>Make it<br><em>your own.</em></h2><p class="panel-copy">A little care makes a beautiful world.</p><div class="divider"></div>
+  <div class="control-block"><div class="control-title"><span>01 &nbsp; THE LIGHT</span><span>☼</span></div><p>Choose a time of day</p><div class="times" role="group" aria-label="Time of day"><button data-time="morning">Morning</button><button data-time="golden" class="active" aria-pressed="true">Golden</button><button data-time="night">Night</button></div></div>
+  <div class="control-block"><div class="control-title"><span>02 &nbsp; THE GARDEN</span><span>✿</span></div><p>Choose a flower, then tap the meadow</p><div class="flowers" role="group" aria-label="Flower color"><button class="flower active" data-color="peach" aria-label="Peach flower" aria-pressed="true"><i style="--c:#f09b82"></i></button><button class="flower" data-color="cream" aria-label="Cream flower" aria-pressed="false"><i style="--c:#f7db9e"></i></button><button class="flower" data-color="lilac" aria-label="Lilac flower" aria-pressed="false"><i style="--c:#bea3d9"></i></button><button class="flower" data-color="pink" aria-label="Pink flower" aria-pressed="false"><i style="--c:#e990b0"></i></button></div></div>
+  <div class="control-block last"><div class="control-title"><span>03 &nbsp; THE VISITORS</span><span>❋</span></div><p>Invite another butterfly to the meadow</p><button id="release" class="release"><span>Release a butterfly</span><span>✧</span></button><p id="count" class="count" aria-live="polite">6 LITTLE VISITORS</p></div>
+  <button id="reset" class="reset">↺ &nbsp; Begin again</button></aside>
+  <footer><span>AN INTERACTIVE ESCAPE FOR THE CURIOUS</span><span>MADE FOR SLOWER MOMENTS &nbsp; ✳</span></footer>
+</main><script type="module" src="app.js"></script></body></html>
