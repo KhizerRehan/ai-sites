@@ -12,12 +12,15 @@ usage() {
 Usage: $(basename "$0") [--print] [group ...]
 
 Groups:
-  repo         sites inside this repo, including otis
   creative     sites under creative/
   interactive  sites under interactive/
+  standalone   sites in their own top-level folder, including otis
   gallery      the interactive gallery page only
   live         deployed URLs from 50-sites-index.md
-  all          repo + creative + interactive (default)
+  all          creative + interactive + standalone
+
+With no group, the script asks what to open. When it is not run from a
+terminal it opens all instead.
 
 --print lists the URLs without opening them or starting servers.
 EOF
@@ -57,7 +60,7 @@ ensure_otis() {
   wait_for "$OTIS_URL"
 }
 
-urls_repo() {
+urls_standalone() {
   for dir in "$ROOT"/*/; do
     d=$(basename "$dir")
     [ "$d" = otis ] && continue
@@ -67,7 +70,9 @@ urls_repo() {
       echo "$BASE/$d/"
     fi
   done
-  [ -d "$ROOT/otis" ] && echo "$OTIS_URL"
+  if [ -d "$ROOT/otis" ]; then
+    echo "$OTIS_URL"
+  fi
 }
 
 urls_creative() {
@@ -89,11 +94,58 @@ urls_gallery() {
 }
 
 urls_live() {
-  grep -o 'https://[^)]*chatgpt\.site' "$ROOT/50-sites-index.md"
+  grep -o 'https://[^)]*chatgpt\.site' "$ROOT/50-sites-index.md" || true
+}
+
+count() {
+  "urls_$1" | wc -l | tr -d ' '
+}
+
+GROUPS_WANTED=""
+
+add_group() {
+  case "$1" in
+    all) GROUPS_WANTED="$GROUPS_WANTED creative interactive standalone" ;;
+    repo) GROUPS_WANTED="$GROUPS_WANTED standalone" ;;
+    creative | interactive | standalone | gallery | live) GROUPS_WANTED="$GROUPS_WANTED $1" ;;
+    *) return 1 ;;
+  esac
+}
+
+choose_groups() {
+  {
+    echo "What do you want to open?"
+    echo "  1) creative     $(count creative) sites"
+    echo "  2) interactive  $(count interactive) sites"
+    echo "  3) standalone   $(count standalone) sites"
+    echo "  4) gallery      the interactive gallery page"
+    echo "  5) live         $(count live) deployed sites"
+    echo "  6) all          creative + interactive + standalone"
+    printf 'Choose one or more (for example 1, or 1 2), q to quit: '
+  } >&2
+  read -r answer || answer=q
+  for a in $(echo "$answer" | tr ',' ' '); do
+    case "$a" in
+      q | Q) exit 0 ;;
+      1) a=creative ;;
+      2) a=interactive ;;
+      3) a=standalone ;;
+      4) a=gallery ;;
+      5) a=live ;;
+      6) a=all ;;
+    esac
+    if ! add_group "$a"; then
+      echo "not a valid choice: $a" >&2
+      exit 2
+    fi
+  done
+  if [ -z "$GROUPS_WANTED" ]; then
+    echo "nothing chosen" >&2
+    exit 0
+  fi
 }
 
 PRINT=0
-GROUPS_WANTED=""
 for arg in "$@"; do
   case "$arg" in
     --print) PRINT=1 ;;
@@ -101,17 +153,24 @@ for arg in "$@"; do
       usage
       exit 0
       ;;
-    all) GROUPS_WANTED="$GROUPS_WANTED repo creative interactive" ;;
-    repo | creative | interactive | gallery | live) GROUPS_WANTED="$GROUPS_WANTED $arg" ;;
     *)
-      usage >&2
-      exit 2
+      if ! add_group "$arg"; then
+        usage >&2
+        exit 2
+      fi
       ;;
   esac
 done
-[ -n "$GROUPS_WANTED" ] || GROUPS_WANTED="repo creative interactive"
 
-URLS=$(for g in $GROUPS_WANTED; do "urls_$g"; done)
+if [ -z "$GROUPS_WANTED" ]; then
+  if [ -t 0 ]; then
+    choose_groups
+  else
+    add_group all
+  fi
+fi
+
+URLS=$(for g in $GROUPS_WANTED; do "urls_$g"; done | awk '!seen[$0]++')
 
 if [ "$PRINT" -eq 1 ]; then
   echo "$URLS"
@@ -120,7 +179,7 @@ fi
 
 for g in $GROUPS_WANTED; do
   case "$g" in
-    repo)
+    standalone)
       ensure_static
       ensure_otis || true
       ;;
